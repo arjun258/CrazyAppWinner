@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Banana Bureau 🍌</title>
+  <meta name="description" content="Claim your free banana. Just a few quick formalities.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Fredoka:wght@400;600;700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/depts.css">
+</head>
+<body>
+  <div id="bg-floaters" aria-hidden="true"></div>
+
+  <div id="world">
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>🚨 YOU ARE THE 1,000,000th VISITOR 🚨 THIS IS NOT A SCAM 🚨 BANANAS ARE NOT LEGALLY BINDING 🚨 GERALD IS WATCHING 🚨 PLEASE DO NOT FEED THE STAFF 🚨 NOW WITH 30% MORE PAPERWORK 🚨&nbsp;</span>
+        <span>🚨 YOU ARE THE 1,000,000th VISITOR 🚨 THIS IS NOT A SCAM 🚨 BANANAS ARE NOT LEGALLY BINDING 🚨 GERALD IS WATCHING 🚨 PLEASE DO NOT FEED THE STAFF 🚨 NOW WITH 30% MORE PAPERWORK 🚨&nbsp;</span>
+      </div>
+    </div>
+
+    <header id="topbar">
+      <div class="logo">
+        <span class="logo-banana">🍌</span>
+        <div><span class="logo-text">THE BANANA BUREAU</span>
+        <small>Ministry of Absolutely Necessary Paperwork · est. yesterday</small></div>
+      </div>
+      <div class="widgets">
+        <div class="widget" id="w-clock">🕐 --:--</div>
+        <div class="widget" id="w-weather">☁️ Currently: vibes</div>
+        <div class="widget" id="w-visitors">👀 Visitors: 1,000,000</div>
+      </div>
+      <nav class="controls">
+        <button class="ctl" id="btn-music">🎵 Music: ON</button>
+        <button class="ctl" id="btn-lights">🌙 Dark mode</button>
+        <button class="ctl" id="btn-gravity">🪂 Gravity</button>
+        <button class="ctl" id="btn-flip" hidden>🙃 Unflip</button>
+        <button class="ctl ctl-skip" id="btn-skip">⏭️ Skip (judges only)</button>
+      </nav>
+    </header>
+
+    <ol id="progress" aria-label="Departments"></ol>
+
+    <main id="stage"></main>
+
+    <footer id="footer">
+      <div class="tnc">
+        <strong>📜 Terms &amp; Conditions</strong> <small>(please read carefully)</small>
+        <div class="tnc-window"><div class="tnc-scroll" id="tnc-scroll"></div></div>
+      </div>
+      <label class="lang">🌐 Language
+        <select id="lang-select">
+          <option value="en">English</option>
+          <option value="pigeon">Pigeon</option>
+          <option value="banana">Banana</option>
+          <option value="shout">SHOUTING</option>
+        </select>
+      </label>
+      <p class="copyright">© 2026 The Banana Bureau. No bananas were legally promised. Gerald is not a licensed pigeon.<br><span class="tiny">Psst: ↑ ↑ ↓ ↓ ← → ← → B A</span></p>
+    </footer>
+  </div>
+
+  <div id="gerald-dock"></div>
+  <div id="duck-chat"></div>
+  <div id="lights-overlay" aria-hidden="true"></div>
+  <div id="popup-layer"></div>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <div id="splash">
+    <div class="sunburst" aria-hidden="true"></div>
+    <div class="splash-card">
+      <div class="splash-flash">⚠️ ALERT ⚠️ ALERT ⚠️</div>
+      <h1>CONGRATU<wbr>LATIONS!!!</h1>
+      <p class="splash-sub">You are visitor <b class="blink">#1,000,000</b></p>
+      <div class="splash-banana" id="splash-banana"></div>
+      <p class="splash-big">You have <span class="rainbow">WON</span> ONE (1) FREE BANANA</p>
+      <button id="btn-claim" class="btn btn-mega">CLAIM MY BANANA 🍌</button>
+      <p class="tiny">🔊 This website makes noise. A lot of it. On purpose.<br>*Just a few quick formalities.</p>
+    </div>
+  </div>
+
+  <script src="js/util.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/gerald.js"></script>
+  <script src="js/chaos.js"></script>
+  <script src="js/depts/lobby.js"></script>
+  <script src="js/depts/identity.js"></script>
+  <script src="js/depts/password.js"></script>
+  <script src="js/depts/volume.js"></script>
+  <script src="js/depts/captcha.js"></script>
+  <script src="js/depts/submit.js"></script>
+  <script src="js/depts/waiting.js"></script>
+  <script src="js/depts/ceremony.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
