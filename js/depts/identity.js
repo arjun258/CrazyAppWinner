@@ -206,6 +206,11 @@
       });
 
       x.script(['Department of Identity! Please tell us who you are.', 'Also, I recommend you read the checkboxes. Like, really read them.']);
+      // The hot single bananas always find you here.
+      x.timeout(() => {
+        BB.chaos.randomPopup('singles', true);
+        x.say('Oh no. The hot single bananas found your address. Do NOT make eye contact.', { mood: 'panic' });
+      }, 2500);
     },
   };
 })();

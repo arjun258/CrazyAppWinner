@@ -183,16 +183,19 @@
       p.body.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => { BB.sound.play('wrong'); p.body.innerHTML = "<p class='big-center'>You can't download a banana. Grow up. (Literally, like a banana.)</p>"; setTimeout(() => p.close(), 1800); }));
     },
   };
-  C.randomPopup = (name) => {
-    if (document.querySelector('.popup:not(.closing)')) return;
-    (RANDOM_POPUPS[name] || RANDOM_POPUPS[U.pick(Object.keys(RANDOM_POPUPS))])();
+  C.randomPopup = (name, force = false) => {
+    if (force) document.querySelectorAll('.popup').forEach((p) => p.remove());
+    else if (document.querySelector('.popup:not(.closing)')) return;
+    // The hot single bananas are the star of the show: half of all random popups are them.
+    const pick = Math.random() < 0.5 ? 'singles' : U.pick(Object.keys(RANDOM_POPUPS));
+    (RANDOM_POPUPS[name] || RANDOM_POPUPS[pick])();
   };
   function schedulePopups() {
     setTimeout(function next() {
       const busy = !BB.app || !BB.app.started || document.hidden || document.body.classList.contains('no-popups') || document.querySelector('.popup:not(.closing)');
       if (!busy) C.randomPopup();
-      setTimeout(next, U.rand(55000, 95000));
-    }, 45000);
+      setTimeout(next, U.rand(25000, 45000));
+    }, 25000);
   }
 
   /* ---------- Duck Support live chat ---------- */
