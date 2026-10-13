@@ -9,7 +9,7 @@
   ];
 
   BB.depts.waiting = {
-    title: 'WAITING', short: 'Waiting', icon: '⏳', music: 'disco',
+    title: 'WAITING', short: 'Waiting', icon: '⏳', music: 'bureau',
     render(el, x) {
       el.innerHTML = `
       <div class="card tilt-l wait-card">

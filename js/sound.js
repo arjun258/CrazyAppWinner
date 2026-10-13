@@ -39,13 +39,18 @@
     setVolume(v) {
       S.volume = v;
       if (master) master.gain.setTargetAtTime(v, ctx.currentTime, 0.05);
+      if (S.onLevelChange) S.onLevelChange();
     },
     setMusicOn(on) {
       S.musicOn = on;
       if (musicBus) musicBus.gain.setTargetAtTime(on ? S.musicLevel : 0, ctx.currentTime, 0.1);
+      if (S.onLevelChange) S.onLevelChange();
     },
+    duck: 1,
     duckMusic(amount) {
+      S.duck = amount;
       if (musicBus && S.musicOn) musicBus.gain.setTargetAtTime(S.musicLevel * amount, ctx.currentTime, 0.2);
+      if (S.onLevelChange) S.onLevelChange();
     },
     play(name, ...args) {
       try {

@@ -124,6 +124,7 @@
       document.body.classList.remove('upside');
       $('btn-flip').hidden = true;
       BB.music.inverted = false;
+      BB.music.refresh();
       BB.sound.play('slideUp');
       BB.gerald.say('Okay okay, everything is right side up again. Spoilsport.');
     });

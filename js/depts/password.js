@@ -16,7 +16,7 @@
   const count = (s, sub) => s.split(sub).length - 1;
 
   BB.depts.password = {
-    title: 'PASSWORDS', short: 'Password', icon: '🔐', music: 'tense',
+    title: 'PASSWORDS', short: 'Password', icon: '🔐', music: 'bureau',
     render(el, x) {
       const st = x.state;
       const moon = MOONS[moonIndex()];

@@ -292,10 +292,54 @@
     }
   }
 
+  // Recorded tracks are played through an <audio> element (works from file:// too),
+  // with its volume following the Ministry's volume, music toggle and ducking.
+  const FILE_TRACKS = { bureau: { src: 'audio/bureau-track.m4a', fallback: 'tense' } };
+  let fileAudio = null, fileName = null;
+  const fileVolume = () => {
+    const S = BB.sound;
+    return S.musicOn ? Math.min(1, S.volume * S.musicLevel * 1.25 * S.duck) : 0;
+  };
+  const applyFileLevel = () => {
+    if (!fileAudio) return;
+    fileAudio.volume = fileVolume();
+    fileAudio.preservesPitch = false;
+    // Upside-down mode slows the track down (and lowers the pitch); disco speeds it up.
+    fileAudio.playbackRate = (M.inverted ? 0.8 : 1) * M.rate;
+  };
+  BB.sound.onLevelChange = applyFileLevel;
+  M.refresh = applyFileLevel;
+  Object.defineProperty(M, 'audio', { get: () => fileAudio });
+
+  function playFile(name) {
+    const t = FILE_TRACKS[name];
+    if (!fileAudio || fileName !== name) {
+      if (fileAudio) fileAudio.pause();
+      fileAudio = new Audio(t.src);
+      fileAudio.loop = true;
+      fileName = name;
+    }
+    fileAudio.currentTime = 0;
+    applyFileLevel();
+    fileAudio.play().catch(() => {
+      // Track couldn't play (missing file, unsupported format): use the synth song instead.
+      if (M.current === name) { M.current = null; M.play(t.fallback); }
+    });
+  }
+  function stopFile() { if (fileAudio) fileAudio.pause(); }
+
   M.play = function (name) {
     const c = BB.sound.ensure();
     if (!c) return;
-    if (cur && cur.name === name) return;
+    if (M.current === name) return;
+    if (FILE_TRACKS[name]) {
+      fadeOut();
+      cur = null;
+      M.current = name;
+      playFile(name);
+      return;
+    }
+    stopFile();
     const song = SONGS[name];
     if (!song) return;
     fadeOut();
@@ -321,6 +365,7 @@
   }
 
   M.stop = function () {
+    stopFile();
     fadeOut();
     cur = null;
     M.current = null;

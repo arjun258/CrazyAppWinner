@@ -47,9 +47,10 @@ To deploy, drag the folder onto Netlify Drop, or push it to GitHub Pages.
 
 ## Tech
 
-Plain HTML, CSS and vanilla JS. Every sound effect **and all the background music**
-(7 original songs) are synthesised live with the Web Audio API. There are no audio files.
-In upside-down mode, the melodies are mirrored too. The characters are hand-drawn inline SVG.
+Plain HTML, CSS and vanilla JS. Every sound effect and most of the background music
+(7 original songs) are synthesised live with the Web Audio API. The Password and
+Waiting departments play a recorded track (`audio/bureau-track.m4a`). In upside-down
+mode the synth melodies are mirrored and the recorded track slows down. The characters are hand-drawn inline SVG.
 
 ```
 index.html
@@ -57,7 +58,8 @@ css/style.css        global look, Gerald, popups, chat, splash
 css/depts.css        per-department styles
 js/util.js           helpers + banana/Kevin SVG art
 js/sound.js          synthesised sound effects
-js/music.js          step sequencer + songs
+js/music.js          step sequencer + songs + recorded-track player
+audio/               recorded track for Password + Waiting
 js/gerald.js         Gerald SVG + speech engine
 js/chaos.js          popups, duck chat, gravity, lights, widgets, konami, confetti
 js/app.js            router, state, progress, splash
